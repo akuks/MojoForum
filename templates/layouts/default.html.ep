@@ -1,5 +1,67 @@
 <!DOCTYPE html>
 <html>
-  <head><title><%= title %></title></head>
-  <body><%= content %></body>
+
+<head>
+    <title><%= title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container mx-auto">
+
+        <nav class="flex justify-center p-4"><a class="text-xl text-indigo-500 font-semibold" href="#"></a></nav>
+
+        <nav class="flex flex-wrap bg-indigo-500 items-center justify-between p-4">
+            
+            <div class="flex flex-shrink-0 mr-10">
+                <a class="text-xl text-white font-bold" href="/"> MojoForum </a>
+            </div>
+
+            <div class="block lg:hidden">
+                
+                <button
+                    class="navbar-burger flex items-center py-2 px-3 text-indigo-500 rounded border border-indigo-500">
+
+                    <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <title>Menu</title>
+                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                    </svg>
+                
+                </button>
+
+            </div>
+
+            <div class="navbar-menu hidden lg:flex lg:flex-grow lg:items-center w-full lg:w-auto">
+                
+                <div class="lg:mr-auto">
+                
+                    <a class="block lg:inline-block mt-4 lg:mt-0 mr-10 text-white font-bold hover:text-blue-700" href="#">Threads </a>
+                
+                </div>
+                
+                <div>
+                
+                    <a class="block lg:inline-block mt-4 lg:mt-0 lg:mr-8 text-white hover:text-red-500 " href="#">Sign in </a>
+                
+                    <a class="inline-block py-3 px-6 mt-4 lg:mt-0 leading-none text-indigo-500 bg-white hover:bg-indigo-600 hover:text-white rounded shadow"
+                        href="#">Sign up
+                    </a>
+                
+                </div>
+
+            </div>
+
+        </nav>
+
+        <%= content %>
+
+    </div>
+
+</body>
+
 </html>
