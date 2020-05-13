@@ -1,11 +1,15 @@
 % layout 'default';
 % title 'MojoForum - A Forum with Mojolicious';
 
+<%= $total_pages %>
+
 % foreach my $thread (@$threads) {
     <div class="w-full border rounded py-3 mt-5">  
         
         <div class="flex font-bold text-blue-700 ml-5">
-            <%= $thread->{title} %> 
+            
+            <%= link_to $thread->{title}, 'thread/'.$thread->{id} => (class => 'hover:text-blue-400' ) %>
+            
         </div> 
         
     </div>
