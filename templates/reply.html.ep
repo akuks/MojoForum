@@ -1,0 +1,42 @@
+% layout 'default';
+% title 'MojoForum - A Forum with Mojolicious';
+
+% foreach my $th (@$thread) {
+    <div class="w-full border rounded py-3 mt-2">  
+
+        <div class="text-blue-700 ml-5">
+            
+            <div class="flex">
+                <p class="flex font-bold">Thread Title: 
+                    <h2 class="ml-3"><%= $th->{title} %> </h2>  
+                </p>
+            </div>
+            
+            <div class="flex">
+                <p class="flex font-bold">Posted By: 
+                    <h2 class="ml-3"><%= $th->{author} %> </h2>  
+                </p>
+            </div>
+
+        </div> 
+        
+    </div>
+
+    <!-- Reply -->
+    % foreach my $reply ( @{ $th->{replies} } ) {
+        <div class="w-full border rounded py3 mt-2">
+            
+            <div class="flex">
+                <p class="flex font-bold ml-3">Replied By: 
+                    <h2 class="ml-3"><%= $reply->{user} %> </h2>  
+                </p>
+            </div>
+               
+            <div class="flex mt-3">    
+                <p class="ml-3"><%= $reply->{body} %>  </p>
+            </div>
+
+        </div>
+        
+    %}
+%}
