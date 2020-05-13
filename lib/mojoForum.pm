@@ -14,12 +14,15 @@ sub startup {
     $self->secrets( $config->{secrets} );
 
     $self->_db_handler();
+    $self->_set_pagination();
 
     # Router
     my $r = $self->routes;
 
     # Normal route to controller
     $r->get('/')->to(controller => 'Thread', action => 'show');
+
+    $r->get('/thread/:id')->to(controller => 'Reply', action => 'show');
 }
 
 sub _db_handler {
@@ -27,6 +30,12 @@ sub _db_handler {
 
     $self->{dbh} = mojoForum::Model::DB->new();
 
+    return $self;
+}
+
+sub _set_pagination {
+    my $self = shift;
+    $self->{paginate} = 10;
     return $self;
 }
 
