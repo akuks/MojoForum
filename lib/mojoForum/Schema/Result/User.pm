@@ -148,6 +148,10 @@ __PACKAGE__->has_many(
 # Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-04-28 21:43:28
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:SCr+ToZGYR0+s9ZnqCLjZQ
 
+sub full_name {
+    my $self = shift;
+    return $self->first_name . ' ' . $self->last_name;
+}
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 1;
