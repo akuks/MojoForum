@@ -22,7 +22,9 @@ sub startup {
     # Normal route to controller
     $r->get('/')->to(controller => 'Thread', action => 'show');
 
+    #$r->get('/thread/create')->to(controller => 'Thread', action => 'create');
     $r->get('/thread/:id')->to(controller => 'Reply', action => 'show');
+
 }
 
 sub _db_handler {
@@ -37,6 +39,12 @@ sub _set_pagination {
     my $self = shift;
     $self->{paginate} = 10;
     return $self;
+}
+
+sub _get_pagination {
+    my $self = shift;
+
+    return $self->{paginate};
 }
 
 1;
