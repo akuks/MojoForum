@@ -1,17 +1,52 @@
 % layout 'default';
 % title 'MojoForum - A Forum with Mojolicious';
 
-<%= $total_pages %>
+% my $prev_url = ($current_page == 1) ? '#' : '/?page='. ($current_page - 1);
+% my $next_url = ($current_page == $total_pages) ? '#' : '/?page='.( $current_page + 1);
+
+% my $prev_btn_class = _get_btn_class ( $current_page,  1 ) ;
+% my $next_btn_class = _get_btn_class ( $current_page, $total_pages ) ; 
+
+% sub _get_btn_class {
+%   my ($current_page, $page_number )= @_ ;
+%
+%   my $btn = ( $current_page == $page_number ) 
+%   ? 'block px-3 py-2 text-blue-700 hover:text-white hover:bg-indigo-500 border-r border-grey-light opacity-50 cursor-not-allowed'
+%   : 'block px-3 py-2 text-blue-700 hover:text-white hover:bg-indigo-500 border-r border-grey-light' ;
+% 
+%   return $btn;
+%}
 
 % foreach my $thread (@$threads) {
-    <div class="w-full border rounded py-3 mt-5">  
-        
+    <div class="w-full border rounded py-3 mt-5">
+
         <div class="flex font-bold text-blue-700 ml-5">
-            
+
             <%= link_to $thread->{title}, 'thread/'.$thread->{id} => (class => 'hover:text-blue-400' ) %>
-            
-        </div> 
-        
+
+        </div>
+
     </div>
-    
+
 %}
+<div class="flex p-4">
+    <ul class="flex mx-auto list-reset border border-grey-light rounded">
+        <li>
+            <%= link_to 'Previous', $prev_url => 
+                (class => $prev_btn_class ) 
+            %>
+        </li>
+    % for my $page (1 .. $total_pages) {
+        <li>
+            <%= link_to $page, '/?page='. $page => 
+                (class => 'block px-3 py-2 text-blue-700 hover:text-white hover:bg-indigo-500 border-r border-grey-light')
+            %>
+        </li>
+    %}
+        <li>
+            <%= link_to 'Next', $next_url => 
+                (class => $next_btn_class ) 
+            %>
+        </li>
+    </ul>
+</div>
