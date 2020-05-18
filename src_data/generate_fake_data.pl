@@ -15,6 +15,7 @@ use strict;
 use warnings;
 
 use Text::Lorem;
+use Data::Random qw(:all);
 
 my $text = Text::Lorem->new();
 
@@ -37,8 +38,9 @@ while ( $user_id <= 20 ) {
   my $last_name   = $text->words(1);
   my $email       = $first_name.'.'.$last_name.'@email.com';
   my $password    = "123456";
+  my $datetime    = rand_datetime( max => 'now' );
   
-  print $ufh "$first_name, $middle_name, $last_name, $email, $password\n"; 
+  print $ufh "$first_name, $middle_name, $last_name, $email, $password, $datetime, $datetime\n"; 
 
   $user_id++;
 }
@@ -47,20 +49,23 @@ while($counter <=50) {
   my $title = $text->words(5);
 
 	my $i = 1;
+    my $datetime    = rand_datetime( max => 'now' );
 
 	while ($i <= 50) {
     my $p_usr = int( rand(18) ) + 1;
 		my $post_body = $text->sentences(4);
 
-		print $pfh "$post_id, $p_usr, $counter, $post_body\n";
+		print $pfh "$post_id, $p_usr, $counter, $post_body, $datetime, $datetime\n";
 		$i++;
 		$post_id++;
 	}
   
+  $datetime    = rand_datetime( max => 'now' );
+
   my $user = int( rand(18) ) + 1;
   my $thread_body = $text->sentences(5);
 
-	print $tfh "$counter, $user, $title, $thread_body\n";
+	print $tfh "$counter, $user, $title, $thread_body, $datetime, $datetime\n";
 
 	$counter++;
 
